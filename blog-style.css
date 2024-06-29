@@ -1,6 +1,19 @@
 /* TRENDING POSTS STYLE */
 
+:root {
+    --paragraph-color: #DF4881;
+    --template-color: #54c2f1;
+    --white-color: #ffff;
+}
+
+.navbar {
+    background-color: rgb(228, 227, 227) !important;
+}
+
+
 .slider-parent {
+    box-shadow: 5px 5px 20px var(--template-color);
+    margin-top: 10px;
     height: fit-content;
     border: 1px solid #dada;
     overflow: hidden;
@@ -16,6 +29,7 @@
 }
 
 .slider-header .slider-title {
+    color: var(--template-color);
     font-size: 20px;
     font-weight: bold;
 }
@@ -40,7 +54,8 @@
 
 
 .child-container {
-    border: 1px solid #dada;
+    box-shadow: 5px 5px 60px rgba(221, 170, 221, 0.414);
+    border: 1px solid rgba(221, 170, 221, 0.807);
     min-width: 40%;
     max-width: fit-content;
     height: fit-content;
@@ -79,7 +94,7 @@
     /* word-wrap: break-word; */
 }
 
-.child-container .child-ele .blog-content .author-name,
+.author-name,
 .comment-icon {
     text-align: end;
     color: #54c2f1;
@@ -87,6 +102,20 @@
 }
 
 /* END TRENDING POSTS STYLE */
+
+/* ALL POST STYLE */
+.blogs .row .card {
+    box-shadow: 3px 3px 10px black;
+    border: 2px solid black;
+}
+
+.author {
+    display: flex;
+    justify-content: end;
+    color: var(--template-color);
+}
+
+/* END ALL POST STYLE */
 
 /* PAGINATION STYLE */
 .pagination {
