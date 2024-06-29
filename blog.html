@@ -1,0 +1,288 @@
+<html>
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="blog-style.css">
+
+    <title>Blogs</title>
+</head>
+
+<body>
+    <!-- Nav begin -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">Blog App</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 gap-4 mb-lg-0 me-auto ms-5">
+                    <li class="nav-item">
+                        <a class="nav-link " aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
+                    <li>
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </li>
+                    <li>
+                        <a class="nav-link disabled" id="add-blog" aria-current="page" href="#">add blog</a>
+                    </li>
+                </ul>
+
+                <span class="d-flex me-3 gap-2" id="login-logout">
+                    <button type="button" class="btn ">Sign Up</button>
+                    <button type="button" class="btn sign-in-Btn">Sign In</button>
+                </span>
+
+                <span class="d-flex me-3 gap-2" id="User-detail">
+                    <p><b>Tushar</b></p>
+                </span>
+
+            </div>
+        </div>
+    </nav>
+    <!-- Nav End -->
+
+    <!-- TRENDING POSTS -->
+
+    <div class="slider-parent container">
+
+        <div class="slider-header">
+            <span class="slider-title">Trending posts</span>
+            <span class="slider-close-btn" onclick="hide_trending_posts()">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </span>
+        </div>
+
+        <div class="slider">
+            <!-- This div auto fill with scripting -->
+        </div>
+    </div>
+    <!-- END TRENDING POSTS -->
+
+    <!-- ALL BLOGS -->
+    <div class="blogs container mt-5">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
+            <div class="col">
+                <div class="card ">
+                    <img src="images/blog.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">programming</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                            to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card ">
+                    <img src="images/blog.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">programming</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                            to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card ">
+                    <img src="images/blog.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">programming</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                            to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card ">
+                    <img src="images/blog.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">programming</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                            to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card ">
+                    <img src="images/blog.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">programming</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                            to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card ">
+                    <img src="images/blog.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">programming</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                            to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card ">
+                    <img src="images/blog.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">programming</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                            to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card ">
+                    <img src="images/blog.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">programming</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in
+                            to
+                            additional content. This content is a little bit longer.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- END ALL BLOGS -->
+
+    <!-- PAGINATION -->
+    <div class="pagination container mt-5 mb-5">
+        <button>Back</button><button>1</button><button>2</button><button>3</button><button>Next</button>
+    </div>
+    <!-- END PAGINATION -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script>
+
+        /* 
+            Script for showing or hiding nav items based on login
+        */
+        var loggedIn = false;
+
+        var signIn_Btn = document.getElementById("login-logout");
+        var user_detail = document.getElementById("User-detail");
+        var add_blog = document.getElementById("add-blog");
+
+
+        if (loggedIn) {
+            user_detail.classList.add("d-block");
+            signIn_Btn.classList.add("d-none");
+            add_blog.classList.remove("disabled");
+        } else {
+            user_detail.classList.add("d-none");
+            signIn_Btn.classList.add("d-block");
+        }
+        // close hiding showing nav script
+
+        //repeat trending blogs--
+        var trending_posts = [{
+            category: "programming",
+            image: "images/blog.jpg",
+            Title: "what is programming what is programming what is programming",
+            desc: "Lorem ipsum dolor sit amet, consectetur adipisicing... ",
+            author: "Tushar Mahajan"
+        }];
+
+        let slider = document.getElementsByClassName("slider")[0];
+        console.log(slider);
+        for (i = 0; i <= 5; i = i + 1) {
+            slider.innerHTML += `
+            <div class="child-container">
+                    <div class="child-ele">
+                        <div class="blog-image">
+                            <img src="${trending_posts[0].image}" alt="">
+                        </div>
+    
+                        <div class="blog-content">
+                            <div><h5>${trending_posts[0].Title}</h5></div>
+                            <p class="content-paragraph">${trending_posts[0].desc}</p>
+                            
+                            <p class="author-name">${trending_posts[0].author}</p>
+
+                            <p class="comment-icon"><i class="fa fa-comment-o" aria-hidden="true"></i>-20</p>
+                        </div>
+                    </div>
+            </div>
+            `;
+        }
+
+
+        //this function is responsible for hiding the trending posts section
+        function hide_trending_posts() {
+            document.getElementsByClassName("slider-parent")[0].style.display = "none";
+        }
+        //close repeat trending blogs---
+
+
+
+
+
+
+        //create data
+        let date = new Date();
+
+        dateStr = date.getDate() + " / " + Number(date.getMonth() + 1) + " / " + date.getFullYear();
+
+        console.log(dateStr);
+
+        var blogs = [
+            {
+                Category: "programming",
+                Title: "Java",
+                Content: "This is a longer card with supporting text below as a natural lead-in to additional content.",
+                Date: dateStr,
+                Img: ""
+            },
+            {
+                Category: "programming",
+                Title: "Pyton",
+                Content: "This is a longer card with supporting text below as a natural lead-in to additional content.",
+                Date: dateStr,
+                Img: ""
+            },
+            {
+                Category: "programming",
+                Title: "C#",
+                Content: "This is a longer card with supporting text below as a natural lead-in to additional content.",
+                Date: dateStr,
+                Img: ""
+            }
+        ];
+
+        console.log(blogs);
+        //close data
+
+    </script>
+</body>
+
+</html>

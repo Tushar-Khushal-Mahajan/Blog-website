@@ -1,0 +1,133 @@
+/* TRENDING POSTS STYLE */
+
+.slider-parent {
+    height: fit-content;
+    border: 1px solid #dada;
+    overflow: hidden;
+    /* Ensure no overflow outside the parent */
+}
+
+.slider-header {
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.slider-header .slider-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.slider-header .slider-close-btn {
+    cursor: pointer;
+}
+
+.slider {
+    background-color: transparent;
+    display: flex;
+    flex-wrap: nowrap;
+    /* Ensure items stay in a single line */
+    gap: 10px;
+    /* Adjust the gap between child containers */
+    overflow-x: auto;
+    /* Enable horizontal scrollbar */
+    overflow-y: hidden;
+    padding: 10px 0;
+    /* Add padding to the slider */
+}
+
+
+.child-container {
+    border: 1px solid #dada;
+    min-width: 40%;
+    max-width: fit-content;
+    height: fit-content;
+    margin: 0 5px;
+    /* Adjust margins as needed */
+    flex: 0 0 auto;
+    /* Prevent shrinking */
+}
+
+.child-container .child-ele {
+    display: flex;
+    overflow: hidden;
+    padding: 5px;
+    gap: 3px;
+}
+
+.child-container .child-ele .blog-image {
+    width: 30%;
+}
+
+.child-container .child-ele .blog-image img {
+    width: 100%;
+    object-fit: cover;
+    /* Adjust image fit */
+    height: fit-content;
+}
+
+.child-container .child-ele .blog-content {
+    width: 70%;
+    overflow: hidden;
+    /* Hide content overflow */
+}
+
+.blog-content div {
+    display: inline-block;
+    /* word-wrap: break-word; */
+}
+
+.child-container .child-ele .blog-content .author-name,
+.comment-icon {
+    text-align: end;
+    color: #54c2f1;
+    cursor: default;
+}
+
+/* END TRENDING POSTS STYLE */
+
+/* PAGINATION STYLE */
+.pagination {
+    display: flex;
+    justify-content: right;
+    gap: 3px;
+}
+
+/* END PAGINATION STYLE */
+
+/* CODE FOR RESPONSIVENESS.. */
+@media screen and (max-width: 993px) {
+
+    /* TRENDING POSTS STYLE */
+    .child-container {
+        width: 95%;
+        margin: 0 5px;
+        height: cover;
+        /* Adjust margins as needed */
+    }
+
+    .child-container .child-ele .blog-image img {
+
+        height: 100%;
+        object-fit: fill;
+    }
+
+    .child-container .child-ele .blog-content p {
+        font-size: 2vw;
+    }
+
+    .child-container .child-ele .blog-content h5 {
+        font-size: 3vw;
+    }
+
+    /* END TRENDING POSTS STYLE */
+
+    /* ALL POSTS STYLE */
+    .blogs .row .col {
+        border-radius: 5px;
+    }
+
+    /* END ALL POSTS STYLE */
+}
