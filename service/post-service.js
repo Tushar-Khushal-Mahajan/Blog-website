@@ -126,6 +126,28 @@ function getTotalCommentOnBlog(blogId) {
     return allComments;
 }
 
+function getBlogByBlogId(blogId) {
+
+    for (let blog of blogData.blogs) {
+        if (blog.blogId == blogId) {
+            let blogObj = {
+                BlogId: blog.blogId,
+                Title: blog.title,
+                Content: blog.content,
+                Category: blog.category,
+                Date: blog.date,
+                Img: blog.img,
+                Comments: getTotalCommentOnBlog(blog.blogId),
+                User: getUserById(blog.userId)
+            }
+
+            return blogObj;
+        }
+    }
+
+    return null;
+
+}
 
 function getAllBlogs() {
     let blogList = [];

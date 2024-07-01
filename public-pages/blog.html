@@ -33,14 +33,9 @@
                         <a class="nav-link " aria-current="page" href="../index.html">Home</a>
                     </li>
                     <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
-                    <!-- <li>
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Search</button>
-                        </form>
-                    </li> -->
                     <li class="nav-item">
-                        <a class="nav-link" id="add-blog" aria-current="page" href="#">add blog</a>
+                        <a class="nav-link" id="add-blog" aria-current="page" href="../private-pages/add-blog.html">add
+                            blog</a>
                     </li>
                 </ul>
 
@@ -188,7 +183,7 @@
         }
 
         function postClick(pid) {
-            alert(pid);
+            window.open(`../public-pages/show-blog.html?id=${pid}`, "_blank");
         }
 
         console.log("inside blog.html");
