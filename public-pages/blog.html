@@ -30,7 +30,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mb-2 gap-4 mb-lg-0 me-auto ms-5">
                     <li class="nav-item">
-                        <a class="nav-link " aria-current="page" href="index.html">Home</a>
+                        <a class="nav-link " aria-current="page" href="../index.html">Home</a>
                     </li>
                     <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
                     <!-- <li>
@@ -39,18 +39,18 @@
                             <button class="btn btn-outline-success" type="submit">Search</button>
                         </form>
                     </li> -->
-                    <li>
-                        <a class="nav-link disabled" id="add-blog" aria-current="page" href="#">add blog</a>
+                    <li class="nav-item">
+                        <a class="nav-link" id="add-blog" aria-current="page" href="#">add blog</a>
                     </li>
                 </ul>
 
-                <span class="d-flex me-3 gap-2" id="login-logout">
-                    <button type="button" class="btn ">Sign Up</button>
-                    <button type="button" class="btn sign-in-Btn">Sign In</button>
-                </span>
+                <!-- <span class="d-flex me-3 gap-2" id="login-logout">
+                    <a class="btn" href="../auth/signed-up.html">Sign Up</a>
+                    <a class="btn sign-in-Btn" href="../auth/signed-in.html">Sign In</a>
+                </span> -->
 
-                <span class="d-flex me-3 gap-2" id="User-detail">
-                    <p><b>Tushar</b></p>
+                <span class="nav-item d-flex me-3 gap-2" id="User-detail">
+                    <p><b class="userName"></b></p>
                 </span>
 
             </div>
@@ -106,34 +106,29 @@
         crossorigin="anonymous"></script>
 
     <!-- Script for load the post data -->
-    <script src="service/post-service.js"></script>
+    <script src="../service/post-service.js"></script>
 
     <script>
 
         /* 
             Script for showing or hiding nav items based on login
         */
-        var loggedIn = false;
+        var loggedIn = (localStorage.getItem("loginUser") == null) ? false : true;
 
-        var signIn_Btn = document.getElementById("login-logout");
         var user_detail = document.getElementById("User-detail");
-        var add_blog = document.getElementById("add-blog");
 
-
-        if (loggedIn) {
-            user_detail.classList.add("d-block");
-            signIn_Btn.classList.add("d-none");
-            add_blog.classList.remove("disabled");
-        } else {
-            user_detail.classList.add("d-none");
-            signIn_Btn.classList.add("d-block");
+        if (loggedIn) { //execute if user logged-in
+            document.getElementsByClassName("userName")[0].innerHTML = `${getUserById(localStorage.getItem("loginUser")).username}`;
+        }
+        else {
+            document.getElementsByClassName("userName")[0].innerHTML = `User`;
         }
         // close hiding showing nav script
-
+        // ============================================================================================
         //repeat trending blogs--
         var trending_posts = [{
             category: "programming",
-            image: "images/blog.jpg",
+            image: "../images/blog.jpg",
             Title: "what is programming what is programming what is programming",
             desc: "Lorem ipsum dolor sit amet, consectetur adipisicing... ",
             author: "Tushar Mahajan"
@@ -162,6 +157,7 @@
             `;
         }
 
+        // ============================================================================================
 
         //this function is responsible for hiding the trending posts section
         function hide_trending_posts() {
@@ -170,51 +166,34 @@
         //close repeat trending blogs---
 
 
+        // ============================================================================================
 
-        //All posts
-        function getAllPosts() {
-            let post_array = new Array();
 
-            for (data of post_data) {
-                let username = data.u_name;
-
-                for (post of data.posts) {
-                    single_post = {
-                        uName: username,
-                        pid: post.p_id,
-                        title: post.title,
-                        content: post.content,
-                        date: post.date,
-                        img: post.img,
-                        comment: post.comment,
-                        total_comment: post.comment.length
-                    }
-                    post_array.push(single_post);
-                }
-            }
-            return post_array;
-        }
-
-        console.log(getAllPosts());
 
         let allPostCardElement = document.getElementsByClassName("all-blog-container")[0];
-        for (let post of getAllPosts()) {
+        for (let post of getAllBlogs()) {
             allPostCardElement.innerHTML += `
-            <div class="col">
+            <div class="col post-col" onclick="postClick(${post.BlogId})">
                 <div class="card ">
-                    <img src="${post.img}" class="card-img-top" alt="...">
+                    <img src="${post.Img}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">${post.title}</h5>
-                        <p class="card-text">${post.content}</p>
-                        <p class="author-name">${post.uName}</p>
-                        <p class="comment-icon"><i class="fa fa-comment-o" aria-hidden="true"></i>-${post.total_comment}</p>
+                        <h5 class="card-title">${post.Title}</h5>
+                        <p class="card-text">${post.Content.slice(0, 70) + "..."}</p>
+                        <p class="author-name">${post.User.username}</p>
+                        <p class="comment-icon"><i class="fa fa-comment-o" aria-hidden="true"></i>-${post.Comments.length}</p>
                     </div>
                 </div>
             </div>
             `;
         }
 
+        function postClick(pid) {
+            alert(pid);
+        }
 
+        console.log("inside blog.html");
+
+        console.log(getAllBlogs());
 
     </script>
 </body>
