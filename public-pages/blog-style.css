@@ -105,6 +105,12 @@
 /* END TRENDING POSTS STYLE */
 
 /* ALL POST STYLE */
+
+.category-btn {
+    display: flex;
+    justify-content: end;
+}
+
 .blogs .row .card {
     box-shadow: 3px 3px 10px black;
     border: 2px solid black;
@@ -115,6 +121,20 @@
     justify-content: end;
     color: var(--template-color);
 }
+
+.card-body .card-text {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.card-body .card-title::first-letter {
+    text-transform: uppercase;
+}
+
+.card-body .author-name::first-letter {
+    text-transform: uppercase;
+}
+
 
 /* END ALL POST STYLE */
 

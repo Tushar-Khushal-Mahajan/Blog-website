@@ -3,12 +3,109 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add your blog</title>
+    <title>Add Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+    </style>
 </head>
 
 <body>
 
+
+    <div class="container mt-5">
+
+        <div class="mb-4">
+            <label for="Title" class="form-label">Enter Title</label>
+            <input type="text" class="form-control" id="Title">
+        </div>
+        <select class="form-select form-select-lg mb-4 form-control" id="categoty">
+            <option selected>Select Category</option>
+            <option value="Programming">Programming</option>
+            <option value="Fashion">Fashion</option>
+            <option value="Lifestyle">Lifestyle</option>
+            <option value="Food">Food</option>
+            <option value="Travel">Travel</option>
+        </select>
+        <div class="mb-4">
+            <label for="fileInput" class="form-label">Choose Cover Image</label>
+            <input class="form-control file-input" type="file" id="fileInput" accept=".jpg,.jpeg,.png" required>
+        </div>
+
+
+        <!-- code for editor -->
+        <div id="summernote">
+            <p>hello</p>
+        </div>
+        <!-- close editor note -->
+
+        <button type="submit" id="convertButton" class="btn btn-primary">Submit</button>
+    </div>
+
+
+    <img src="" alt="" id="image">
 </body>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+
+
+<script src="../service/post-service.js"></script>
+
+<script>
+    // code for editor
+    $('#summernote').summernote({
+        height: 300
+    });
+
+
+    /**
+     * Below code for converting cover-image into base64 string
+    */
+    let fileInput = document.getElementById("fileInput");
+
+    //holds the image data
+    var binary_image;
+
+    fileInput.addEventListener("change", (e) => {
+        const file = e.target.files[0]; // Access files from event target
+        const reader = new FileReader();
+
+        reader.addEventListener("load", () => {
+            binary_image = reader.result;
+        });
+
+        reader.readAsDataURL(file);
+    });
+    //end base64 code
+
+    // submtiBtn code--
+    document.getElementById("convertButton").addEventListener("click", () => {
+        let title = document.getElementById("Title").value;
+        let Category = document.getElementById("categoty").value;
+        let content = $("#summernote").summernote("code");
+
+
+        console.log("binary image = ", binary_image);
+        console.log(title, Category);
+        console.log("content = ", content);
+
+        try {
+            document.getElementById("image").setAttribute("src", binary_image);
+            AddBlog(Category, title, content, binary_image);
+            alert("upload");
+
+        }
+        catch (err) {
+            alert("error");
+        }
+
+    });
+
+    // close ready() function..
+</script>
 
 </html>

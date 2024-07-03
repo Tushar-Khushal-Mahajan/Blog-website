@@ -59,7 +59,7 @@ class Comment {
         this.blogId = blogId;
         this.text = text;
         this.date = date;
-        this.userID = userId;
+        this.userId = userId;
     }
 }
 
@@ -95,13 +95,13 @@ function findUserByEmailAndPassword(email, password) {
 /**
  * this method is use for adding a blog to the local-storage
 */
-function AddBlog(userID, blogId, category, title, content, img, date) {
-
+function AddBlog(category, title, content, img) {
+    let bId = Number(+blogData.blogs.length + 1);
     //add blog to blogdata
-    let blog = new Blog(userID, blogId, category, title, content, img, date);
+    let blog = new Blog(localStorage.getItem("loginUser"), bId, category, title, content, img, new Date());
     blogData.blogs.push(blog);
 
-    localStorage.setItem("blogs", JSON.stringify(blogData.blogs))
+    localStorage.setItem("blogs", JSON.stringify(blogData.blogs));
 }
 
 /**
@@ -171,7 +171,6 @@ function getAllBlogs() {
 }
 
 console.log(blogData);
-
 // console.log(getTotalCommentOnBlog());
 // console.log("blog data = ", blogData);
 

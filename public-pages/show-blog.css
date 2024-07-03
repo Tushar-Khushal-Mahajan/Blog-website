@@ -6,35 +6,89 @@ body {
 .blog-container {
     margin-top: 5px;
     width: 100%;
+    display: flex;
 }
 
-.blog-body img {
+.blog-body .img {
     object-fit: cover;
     width: 40%;
     float: right;
+    padding: 5px;
 }
 
 .blog-body .content {
     padding-top: 40px;
 }
 
+
 .content .author-name {
+    font-family: 'Times New Roman', Times, serif;
     font-size: 50px;
     font-weight: 300px;
 }
 
+.author-name::first-letter {
+    text-transform: capitalize;
+}
+
 .content .title {
+    font-family: 'Times New Roman', Times, serif;
     font-weight: bold;
     font-size: 30px;
     font-weight: 250px;
-    padding-bottom: 8px;
-    border-bottom: 1px solid black;
+
 }
 
+.content .title::first-letter {
+    text-transform: uppercase;
+}
+
+.content .date {
+    display: block;
+    border-bottom: 1px solid black;
+    text-align: right;
+}
+
+.content .desc {
+    text-align: justify;
+}
+
+/* Styling for commets */
+
+.comment-container {
+    width: 100%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    border: 1px solid gray;
+    padding: 20px;
+    user-select: none;
+}
+
+.comment-section-heading {
+    color: red;
+    text-shadow: 1px 0.5px 90px red;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.comment-card {
+    border: 2px solid red;
+    border-radius: 5%;
+    box-shadow: 1px 1px 5px black;
+}
+
+.comment-header {
+    display: flex;
+    justify-content: space-between;
+    color: red;
+    text-shadow: 0.3px 0.3px red;
+}
+
+/* End comment section styling */
 
 /* CODE FOR RESPONSIVENESS.. */
 @media screen and (max-width: 993px) {
-    .blog-body img {
+    .blog-body .img {
         width: 100%;
         object-fit: cover;
         text-align: center;
@@ -48,8 +102,6 @@ body {
     .content .title {
         font-size: 3vw;
         font-weight: 250px;
-        padding-bottom: 8px;
-        border-bottom: 1px solid black;
     }
 }
 
@@ -57,7 +109,5 @@ body {
     .content .title {
         font-size: 4vw;
         font-weight: bolder;
-        padding-bottom: 8px;
-        border-bottom: 1px solid black;
     }
 }

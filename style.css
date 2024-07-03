@@ -40,23 +40,29 @@ body {
 
 .main .left h1 {
     font-size: 3vw;
+    text-shadow: 1px 1px white;
 }
 
 .main .left p {
     margin-top: 25px;
     color: #000000;
+    text-shadow: 1px 1px 5px white;
 }
 
 .main .right {
     text-align: center;
     width: 50%;
+    border-radius: 10%;
     overflow: hidden;
+    height: fit-content;
+    box-shadow: 10px 10px 60px rgba(255, 255, 255, 0.432);
+    animation: image-anim 4s infinite ease-in-out;
 }
 
 
 .main .right img {
-    animation: image-anim 4s infinite ease-in-out;
     width: 100%;
+    border-radius: 10%;
 }
 
 @keyframes image-anim {
@@ -95,6 +101,12 @@ body {
     width: 80%;
     object-fit: cover;
     animation: about-image-anim 4s infinite alternate ease-in-out;
+}
+
+.community,
+.contact {
+    color: var(--template-color);
+    text-shadow: 1px 1px 30px var(--template-color);
 }
 
 
