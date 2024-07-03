@@ -255,7 +255,12 @@ let comments = [
     },
 ];
 
-localStorage.setItem("user", JSON.stringify(users));
-// localStorage.setItem("loginUser", 1);
-localStorage.setItem("blogs", JSON.stringify(posts));
-localStorage.setItem("comments", JSON.stringify(comments));
+if (!localStorage.getItem("isDummyLoad")) {
+    localStorage.setItem("user", JSON.stringify(users));
+    // localStorage.setItem("loginUser", 1);
+    localStorage.setItem("blogs", JSON.stringify(posts));
+    localStorage.setItem("comments", JSON.stringify(comments));
+
+
+    localStorage.setItem("isDummyLoad", 1);
+}

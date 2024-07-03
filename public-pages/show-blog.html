@@ -92,12 +92,17 @@
             let comment_Text = e.target[0].value;
             let userId = localStorage.getItem("loginUser");
             let date = new Date().toString().slice(4, 15);
-            
+
 
             if (userId != null) {
-                AddComment(blogId, comment_Text, date, userId);
-                loadCommentData();
-                e.target[0].value = "";
+
+                if (comment_Text.trim() == "") {
+                    alert("Comment description cannot be empty");
+                } else {
+                    AddComment(blogId, comment_Text, date, userId);
+                    loadCommentData();
+                    e.target[0].value = "";
+                }
             }
             else {
                 alert("You are not logged In");

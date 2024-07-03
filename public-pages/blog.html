@@ -78,33 +78,29 @@
                 Select Category
             </button>
             <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
-                <li><a class="dropdown-item" href="#">Something else here</a></li>
-                <li>
-                    <hr class="dropdown-divider">
-                </li>
-                <li><a class="dropdown-item" href="#">Separated link</a></li>
+                <li class="dropdown-item" value="All">All</li>
+                <li class="dropdown-item" value="Fahion">Fashion</li>
+                <li class="dropdown-item" value="Lifestyle">Lifestyle</li>
+                <li class="dropdown-item" value="Movie">Movie</li>
+                <li class="dropdown-item" value="Business">Business</li>
+                <li class="dropdown-item" value="Travel">Travel</li>
+                <li class="dropdown-item" value="News">News</li>
+                <li class="dropdown-item" value="Personal">Personal</li>
+                <li class="dropdown-item" value="programming">programming</li>
+                <li class="dropdown-item" value="Sports">Sports</li>
+                <li class="dropdown-item" value="Finance">Finance</li>
+                <li class="dropdown-item" value="Food">Food</li>
+
             </ul>
         </div>
     </div>
     <!-- CATEGORY BTN END -->
 
+
     <!-- ALL BLOGS -->
     <div class="blogs container mt-5">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 all-blog-container">
-            <!-- <div class="col">
-                <div class="card ">
-                    <img src="images/blog.jpg" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">what is java</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to...
-                        </p>
-                        <p class="author-name">Tushar Mahajan</p>
-                        <p class="comment-icon"><i class="fa fa-comment-o" aria-hidden="true"></i>-20</p>
-                    </div>
-                </div>
-            </div> -->
+            <!-- filled using javaScript -->
         </div>
     </div>
     <!-- END ALL BLOGS -->
@@ -187,25 +183,55 @@
         // ============================================================================================
 
 
-        // show all blogs
+        // // show all blogs
         let allPostCardElement = document.getElementsByClassName("all-blog-container")[0];
-        for (let post of getAllBlogs()) {
-            allPostCardElement.innerHTML += `
-            <div class="col post-col" onclick="postClick(${post.BlogId})">
-                <div class="card ">
-                    <img src="${post.Img}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">${post.Title}</h5>
-                        <p class="author-name">${post.User.username}</p>   
-                        <p class="comment-icon"><i class="fa fa-comment-o" aria-hidden="true"></i>-${post.Comments.length}</p>
-                    </div>
-                </div>
-            </div>
-            `;
+        // show category-wise blogs
+        function showBlogsWithCategory(category) {
+
+            allPostCardElement.innerHTML = "";
+
+            for (let post of getAllBlogs()) {
+
+                // console.log(post.Category.toUpperCase(), category.toUpperCase());
+                if (post.Category.toUpperCase() == category.toUpperCase() || category == "All") {
+                    console.log(post);
+                    allPostCardElement.innerHTML += `
+                            <div class="col post-col" onclick="postClick(${post.BlogId})">
+                                <div class="card ">
+                                    <img src="${post.Img}" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">${post.Title}</h5>
+                                        <p class="author-name">${post.User.username}</p>   
+                                        <p class="comment-icon"><i class="fa fa-comment-o" aria-hidden="true"></i>-${post.Comments.length}</p>
+                                    </div>
+                                </div>
+                            </div>`;
+                }
+
+            }
         }
+
+        showBlogsWithCategory("All");
 
         // end show all blogs
 
+
+        // ============================================================================================
+
+        //category Btn
+        let catogeryList = document.getElementsByClassName("dropdown-item");
+
+
+        for (list of catogeryList) {
+            list.addEventListener("click", (e) => {
+                console.log(e.target.innerText);
+                showBlogsWithCategory(e.target.innerText);
+            });
+        }
+
+        // ============================================================================================
+
+        // execute when post is clicked
         function postClick(pid) {
             window.open(`../public-pages/show-blog.html?id=${pid}`, "_blank");
         }
