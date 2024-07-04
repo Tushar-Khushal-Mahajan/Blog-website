@@ -53,6 +53,31 @@ body {
     text-align: justify;
 }
 
+/* styling for shareBtn */
+.shareBtnDiv {
+    text-align: right;
+}
+
+.shareBtnDiv .shareBtn {
+    user-select: none;
+    color: white;
+    background-image: linear-gradient(57deg, red, blue, white);
+    font-size: 20px;
+    border-radius: 30%;
+    padding: 20px;
+    animation: changeColor 2s infinite ease-in-out;
+}
+
+@keyframes changeColor {
+    0% {
+        background-image: linear-gradient(57deg, blue, red, white);
+    }
+
+    100% {
+        background-image: linear-gradient(57deg, red, blue, white);
+    }
+}
+
 /* Styling for commets */
 
 .comment-container {

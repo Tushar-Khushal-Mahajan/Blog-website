@@ -26,6 +26,12 @@
         </div>
     </div>
 
+
+    <div class="shareBtnDiv container mt-5">
+        <button class="shareBtn" onclick="shareBtn()"> Share with your friends | <i class="fa fa-share-alt"
+                aria-hidden="true"></i></button>
+    </div>
+
     <!-- comment form section -->
     <div class="comment-container container">
         <h3 class="comment-section-heading">Share your thougths in comment section</h3>
@@ -135,5 +141,15 @@
     //what if is data not available
     else {
         alert("no data avl");
+    }
+
+    // share btn
+    async function shareBtn() {
+        await navigator.share(
+            {
+                title: document.title,
+                url: window.location.href
+            }
+        );
     }
 </script>
