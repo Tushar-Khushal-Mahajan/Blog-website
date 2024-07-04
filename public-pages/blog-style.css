@@ -64,9 +64,11 @@
     /* Adjust margins as needed */
     flex: 0 0 auto;
     /* Prevent shrinking */
+    height: 150px;
 }
 
 .child-container .child-ele {
+    height: 100%;
     display: flex;
     overflow: hidden;
     padding: 5px;
@@ -75,13 +77,14 @@
 
 .child-container .child-ele .blog-image {
     width: 30%;
+    height: 100%;
 }
 
 .child-container .child-ele .blog-image img {
     width: 100%;
-    object-fit: cover;
+    object-fit: fill;
     /* Adjust image fit */
-    height: fit-content;
+    height: 100%;
 }
 
 .child-container .child-ele .blog-content {
@@ -106,15 +109,26 @@
 
 /* ALL POST STYLE */
 
+/* style for category btn */
 .category-btn {
     display: flex;
     justify-content: end;
+    cursor: pointer;
+    user-select: none;
 }
 
+
 .blogs .row .card {
+    cursor: pointer;
+    user-select: none;
     box-shadow: 3px 3px 10px black;
     border: 2px solid black;
 }
+
+.blogs .row .card:hover {
+    box-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px darkblue;
+}
+
 
 .author {
     display: flex;
@@ -139,11 +153,11 @@
 /* END ALL POST STYLE */
 
 /* PAGINATION STYLE */
-.pagination {
+/* .pagination {
     display: flex;
     justify-content: right;
     gap: 3px;
-}
+} */
 
 /* END PAGINATION STYLE */
 

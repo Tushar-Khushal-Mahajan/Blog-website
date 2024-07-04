@@ -221,7 +221,7 @@ let comments = [
         blogId: 9,
         text: "this is helpful to me",
         date: new Date().toString().slice(4, 15),
-        userId: 3
+        userId: 5
     },
     {
         blogId: 10,

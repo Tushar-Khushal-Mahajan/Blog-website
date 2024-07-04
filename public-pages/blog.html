@@ -38,12 +38,6 @@
                             target="_blank">Post Blog</a>
                     </li>
                 </ul>
-
-                <!-- <span class="d-flex me-3 gap-2" id="login-logout">
-                    <a class="btn" href="../auth/signed-up.html">Sign Up</a>
-                    <a class="btn sign-in-Btn" href="../auth/signed-in.html">Sign In</a>
-                </span> -->
-
                 <span class="nav-item d-flex me-3 gap-2" id="User-detail">
                     <p><b class="userName"></b></p>
                 </span>
@@ -98,7 +92,7 @@
 
 
     <!-- ALL BLOGS -->
-    <div class="blogs container mt-5">
+    <div class="blogs container mt-5 mb-5">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 all-blog-container">
             <!-- filled using javaScript -->
         </div>
@@ -106,9 +100,9 @@
     <!-- END ALL BLOGS -->
 
     <!-- PAGINATION -->
-    <div class="pagination container mt-5 mb-5">
+    <!-- <div class="pagination container mt-5 mb-5">
         <button>Back</button><button>1</button><button>2</button><button>3</button><button>Next</button>
-    </div>
+    </div> -->
     <!-- END PAGINATION -->
 
     <!-- Option 1: Bootstrap Bundle with Popper -->
@@ -131,7 +125,7 @@
         var user_detail = document.getElementById("User-detail");
 
         if (loggedIn) { //execute if user logged-in
-            console.log("login user = ", localStorage.getItem("loginUser"));
+
             document.getElementsByClassName("userName")[0].innerHTML = `${getUserById(localStorage.getItem("loginUser")).username}`;
         }
         else {
@@ -150,19 +144,18 @@
 
         let slider = document.getElementsByClassName("slider")[0];
 
-        for (i = 0; i <= 5; i = i + 1) {
+        for (let post of getTrendingBlogs()) {
             slider.innerHTML += `
-            <div class="child-container">
+            <div class="child-container" onclick="postClick(${post.BlogId})">
                     <div class="child-ele">
                         <div class="blog-image">
-                            <img src="${trending_posts[0].image}" alt="">
+                            <img src="${post.Img}" alt="">
                         </div>
-    
+
                         <div class="blog-content">
-                            <div><h5>${trending_posts[0].Title}</h5></div>
-                            <p class="content-paragraph">${trending_posts[0].desc}</p>
-                            
-                            <p class="author-name">${trending_posts[0].author}</p>
+                            <div><h5>${post.Title}</h5></div>
+
+                            <p class="author-name">${post.User.username}</p>
 
                             <p class="comment-icon"><i class="fa fa-comment-o" aria-hidden="true"></i>-20</p>
                         </div>
@@ -192,9 +185,8 @@
 
             for (let post of getAllBlogs()) {
 
-                // console.log(post.Category.toUpperCase(), category.toUpperCase());
                 if (post.Category.toUpperCase() == category.toUpperCase() || category == "All") {
-                    console.log(post);
+
                     allPostCardElement.innerHTML += `
                             <div class="col post-col" onclick="postClick(${post.BlogId})">
                                 <div class="card ">
@@ -221,10 +213,9 @@
         //category Btn
         let catogeryList = document.getElementsByClassName("dropdown-item");
 
-
+        // Bind event to each category list element
         for (list of catogeryList) {
             list.addEventListener("click", (e) => {
-                console.log(e.target.innerText);
                 showBlogsWithCategory(e.target.innerText);
             });
         }

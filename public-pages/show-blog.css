@@ -64,6 +64,11 @@ body {
     user-select: none;
 }
 
+.comment-container #comment-body {
+    height: 300px;
+    overflow-x: scroll;
+}
+
 .comment-section-heading {
     color: red;
     text-shadow: 1px 0.5px 90px red;

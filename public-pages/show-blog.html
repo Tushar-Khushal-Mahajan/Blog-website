@@ -16,34 +16,34 @@
 </head>
 
 <body>
+
+    <!-- for showing blog information -->
     <div class="container">
-
         <div class="blog-container">
-
             <div class="blog-body">
                 <!-- data fill using javaScript -->
             </div>
-
         </div>
+    </div>
 
-        <div class="comment-container container">
-            <h3 class="comment-section-heading">Share your thougths in comment section</h3>
-            <div id="comment-body">
-                <!-- autofill in script -->
-            </div>
-            <form id="comment-form">
-                <div class="row post-comment mt-5">
-                    <div class="col col-10">
-                        <input type="text" class="form-control" placeholder="Write your comment Here.."
-                            aria-label="First name">
-                    </div>
-                    <div class="col col-2">
-                        <button type="submit" class="form-control btn btn-primary"><i class="fa fa-paper-plane"
-                                aria-hidden="true"></i></button>
-                    </div>
+    <!-- comment form section -->
+    <div class="comment-container container">
+        <h3 class="comment-section-heading">Share your thougths in comment section</h3>
+        <div id="comment-body">
+            <!-- autofill in script -->
+        </div>
+        <form id="comment-form">
+            <div class="row post-comment mt-5">
+                <div class="col col-10">
+                    <input type="text" class="form-control" placeholder="Write your comment Here.."
+                        aria-label="First name">
                 </div>
-            </form>
-        </div>
+                <div class="col col-2">
+                    <button type="submit" class="form-control btn btn-primary"><i class="fa fa-paper-plane"
+                            aria-hidden="true"></i></button>
+                </div>
+            </div>
+        </form>
     </div>
 </body>
 
@@ -56,7 +56,6 @@
 
     //get parameter from url
     const queryString = window.location.search;
-    console.log(queryString);
     const urlParams = new URLSearchParams(queryString);
 
     let blogId = urlParams.get("id");
@@ -67,7 +66,6 @@
 
     //check if blog data is available or not
     if (blogObj != null) {
-        console.log(document.title);
         document.title = `${(blogObj.User.username).slice(0, 9)} | ${(blogObj.Title).slice(0, 15)}..`;
 
         //show data..
@@ -117,9 +115,6 @@
             let commentBody = document.getElementById("comment-body");
             commentBody.innerHTML = '';
 
-            console.log("after comment= ", blogObj.Comments);
-
-            console.log("comment obj = ", blogObj.Comments);
             for (comment of blogObj.Comments) {
                 commentBody.innerHTML += `
                 <div class="card mt-3 comment-card">

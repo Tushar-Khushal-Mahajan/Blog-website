@@ -50,7 +50,6 @@
         conpass = document.getElementsByName("c-pass")[0].value;
         check = document.getElementsByName("checkbox")[0].checked;
 
-        console.log(check);
 
         if (userName.trim() != "" || email.trim() != "" || pass.trim() != "" || conpass.trim() != "") {
             if (!check) {
@@ -62,7 +61,7 @@
             else {
                 alert("data insert");
                 let uId = blogData.users.length;
-                console.log("userid = ", uId);
+
                 RegisterUser(Number(uId + 1), email, userName, pass);
 
                 history.back();

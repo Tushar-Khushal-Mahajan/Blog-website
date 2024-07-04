@@ -19,9 +19,9 @@
 
         <div class="mb-4">
             <label for="Title" class="form-label">Enter Title</label>
-            <input type="text" class="form-control" id="Title">
+            <input type="text" class="form-control" id="Title" required>
         </div>
-        <select class="form-select form-select-lg mb-4 form-control" id="categoty">
+        <select class="form-select form-select-lg mb-4 form-control" id="categoty" required>
             <option selected>Select Category</option>
             <option value="Programming">Programming</option>
             <option value="Fashion">Fashion</option>
@@ -50,8 +50,6 @@
         <button type="submit" id="convertButton" class="btn btn-primary">Submit</button>
     </div>
 
-
-    <img src="" alt="" id="image">
 </body>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -90,23 +88,36 @@
 
     // submtiBtn code--
     document.getElementById("convertButton").addEventListener("click", () => {
-        let title = document.getElementById("Title").value;
-        let Category = document.getElementById("categoty").value;
-        let content = $("#summernote").summernote("code");
+
+        // authenticate the user
+        let userId = localStorage.getItem("loginUser");
+        if (userId != null) {
 
 
-        console.log("binary image = ", binary_image);
-        console.log(title, Category);
-        console.log("content = ", content);
+            let title = document.getElementById("Title").value;
+            let Category = document.getElementById("categoty").value;
+            let content = $("#summernote").summernote("code");
 
-        try {
-            document.getElementById("image").setAttribute("src", binary_image);
-            AddBlog(Category, title, content, binary_image);
-            alert("upload");
+            // check details is valid or not
+            if (!(title.trim() == "" || Category == "Select Category" || binary_image.trim() == "" || content.trim == "")) {
 
-        }
-        catch (err) {
-            alert("error");
+                try {
+                    //add blogs to the service-variable and local-storage
+                    AddBlog(Category, title, content, binary_image);
+                    alert("upload");
+
+                }
+                catch (err) {
+                    alert("error");
+                }
+            }
+            //if details not valid
+            else {
+                alert("All fields are mendatory");
+            }
+
+        } else {
+            alert("you are not logged in ");
         }
 
     });
