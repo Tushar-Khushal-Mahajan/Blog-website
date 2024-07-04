@@ -66,6 +66,9 @@
 
     <!-- CATEGORY BTN -->
     <div class="mt-3 category-btn container">
+
+        <input type="text" class="me-5" placeholder="Search Blog" id="searchBox" />
+
         <div class="btn-group">
             <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown"
                 aria-expanded="false">
@@ -134,13 +137,7 @@
         // close hiding showing nav script
         // ============================================================================================
         //repeat trending blogs--
-        var trending_posts = [{
-            category: "programming",
-            image: "../images/blog.jpg",
-            Title: "what is programming what is programming what is programming",
-            desc: "Lorem ipsum dolor sit amet, consectetur adipisicing... ",
-            author: "Tushar Mahajan"
-        }];
+
 
         let slider = document.getElementsByClassName("slider")[0];
 
@@ -157,7 +154,7 @@
 
                             <p class="author-name">${post.User.username}</p>
 
-                            <p class="comment-icon"><i class="fa fa-comment-o" aria-hidden="true"></i>-20</p>
+                            <p class="comment-icon"><i class="fa fa-comment-o" aria-hidden="true"></i>-${post.Comments.length}</p>
                         </div>
                     </div>
             </div>
@@ -178,16 +175,14 @@
 
         // // show all blogs
         let allPostCardElement = document.getElementsByClassName("all-blog-container")[0];
-        // show category-wise blogs
-        function showBlogsWithCategory(category) {
 
-            allPostCardElement.innerHTML = "";
+        /**
+         * this is the main function responsible for displaying the Blogs based on 
+         * passing of post
+        */
 
-            for (let post of getAllBlogs()) {
-
-                if (post.Category.toUpperCase() == category.toUpperCase() || category == "All") {
-
-                    allPostCardElement.innerHTML += `
+        function showBlogs(post) {
+            allPostCardElement.innerHTML += `
                             <div class="col post-col" onclick="postClick(${post.BlogId})">
                                 <div class="card ">
                                     <img src="${post.Img}" class="card-img-top" alt="...">
@@ -198,11 +193,23 @@
                                     </div>
                                 </div>
                             </div>`;
+        }
+
+        // show category-wise blogs
+        function showBlogsWithCategory(category) {
+
+            allPostCardElement.innerHTML = "";
+
+            for (let post of getAllBlogs()) {
+
+                if (post.Category.toUpperCase() == category.toUpperCase() || category == "All") {
+                    showBlogs(post);
                 }
 
             }
         }
 
+        //default show all the blogs on a screen
         showBlogsWithCategory("All");
 
         // end show all blogs
@@ -219,6 +226,26 @@
                 showBlogsWithCategory(e.target.innerText);
             });
         }
+
+        // ============================================================================================
+
+        //code for search box
+        let searchBox = document.getElementById("searchBox");
+
+        searchBox.addEventListener("keyup", () => {
+
+
+            allPostCardElement.innerHTML = "";
+
+            for (const blog of getAllBlogs()) {
+                //      search by content                           search by title
+                if (blog.Content.search(searchBox.value) >= 0 || blog.Title.search(searchBox.value) >= 0) {
+                    showBlogs(blog);
+                }
+            }
+
+
+        });
 
         // ============================================================================================
 
